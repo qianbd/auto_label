@@ -18,9 +18,5 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      - name: Install requirements
-        uses: qianbd/auto_label@feat-add-code
-            pip3 install -r label/requirements.txt
       - name: add lebal
         uses: qianbd/auto_label@master
-            python3 label/auto_label.py
