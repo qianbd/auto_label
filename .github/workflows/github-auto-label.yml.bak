@@ -17,5 +17,3 @@ jobs:
       - uses: ./
         with:
           GH_PAT: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_LABEL: "type;priority"
-          PR_LABEL: "type;priority;day"
