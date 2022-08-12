@@ -11,4 +11,4 @@ FROM python:3.8.12
 COPY --from=builder /app /app
 WORKDIR /app
 ENV PYTHONPATH /app
-CMD ["python3 /app/main.py"]
+CMD ["/app/main.py"]
