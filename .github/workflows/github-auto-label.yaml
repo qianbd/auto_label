@@ -20,4 +20,4 @@ jobs:
           python-version: '3.8'
       - name: add lebal
         uses: qianbd/auto_label@feat-add-code
-      
+     
