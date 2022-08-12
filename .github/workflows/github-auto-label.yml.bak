@@ -9,10 +9,6 @@ jobs:
   build:
     name: auto add label
     runs-on: ubuntu-latest
-    env:
-      GH_PAT: ${{ secrets.GITHUB_TOKEN }}
-      ISSUE_LABEL: "type;priority"
-      PR_LABEL: "type;priority;day"
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v2
@@ -20,4 +16,6 @@ jobs:
           python-version: '3.8'
       - uses: ./
         with:
-          from_repo: qianbd/auto_label
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_LABEL: "type;priority"
+          PR_LABEL: "type;priority;day"
