@@ -20,6 +20,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
+      - uses: qianbd/auto_label@master
       - name: Install requirements
         run: pip3 install -r qianbd/auto_label/label/requirements.txt
       - name: add lebal
