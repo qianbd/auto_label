@@ -1,0 +1,7 @@
+name: 'Auto add label'
+author: jiawei
+description: 'add label automatically'
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
