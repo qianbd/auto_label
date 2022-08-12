@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  build:
     name: auto add label
     runs-on: ubuntu-latest
     env:
