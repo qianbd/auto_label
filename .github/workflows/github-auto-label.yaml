@@ -19,3 +19,5 @@ jobs:
         with:
           python-version: '3.8'
       - uses: ./
+        with:
+          from_repo: qianbd/auto_label
