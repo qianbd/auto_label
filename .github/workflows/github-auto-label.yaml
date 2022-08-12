@@ -22,6 +22,6 @@ jobs:
           python-version: '3.8'
       - uses: qianbd/auto_label@feat-add-code
       - name: Install requirements
-        run: pip3 install -r auto_label/label/requirements.txt
+        run: pip3 install -r /qianbd/auto_label/feat-add-code/auto_label/label/requirements.txt
       - name: add lebal
-        run: python3 auto_label/label/auto_label.py
+        run: python3 /qianbd/auto_label/feat-add-code/auto_label/label/auto_label.py
