@@ -10,5 +10,4 @@ RUN pip3 install --target=/app -r /app/requirements.txt
 FROM python:3.8.12
 COPY --from=builder /app /app
 WORKDIR /app
-ENV PYTHONPATH /app
 CMD ["python3 /app/main.py"]
