@@ -58,12 +58,11 @@ def main(repo_name, issue_num, pr_num):
     list_issue_label = issue_labels.split(";")
     list_pr_label = pr_labels.split(";")
     repo = gh.get_repo(repo_name)
-    list_issues=[]
-    list_prs=[]
+    list_issues = []
+    list_prs = []
     if issue_num:
-        list_git_issue = repo.get_issue(issue_num)
-        for each in list_git_issue:
-            list_issues.append(each)
+        git_issue = repo.get_issue(issue_num)
+        list_issues.append(git_issue)
     else:
         list_issues = get_issues(repo)
 
@@ -71,9 +70,8 @@ def main(repo_name, issue_num, pr_num):
         mod_pr_issue_label(list_issues, each)
 
     if pr_num:
-        list_git_prs = repo.get_pull(pr_num)
-        for each in list_git_prs:
-            list_prs.append(each)
+        git_pr = repo.get_pull(pr_num)
+        list_prs.append(git_pr)
     else:
         list_prs = get_prs(repo)
 
