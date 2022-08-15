@@ -1,7 +1,6 @@
 import os
 from datetime import datetime, timedelta
 from github import Github
-from requests import delete
 
 gh_url = "https://github.com"
 token = os.environ["GH_PAT"]
@@ -45,8 +44,6 @@ def get_prs(repo):
 
 
 def mod_pr_issue_label(list_element, label):
-    none_num = 0
-    label_num = 0
     for element in list_element:
         if check_element_label(element, label) == False:
             # element.set_labels(*element.labels, "{}/none".format(label))
@@ -54,12 +51,7 @@ def mod_pr_issue_label(list_element, label):
         else:
             none_label = "{}/none".format(label)
             if check_element_label(element, none_label) == True:
-                none_num = 1
-            else:
-                label_num = 1
-
-    if none_num == 1 and label_num == 1:
-        element.remove_labels("{}/none".format(label))
+                element.remove_labels("{}/none".format(label))
 
 
 def main(repo_name, issue_num, pr_num):
@@ -69,6 +61,7 @@ def main(repo_name, issue_num, pr_num):
 
     if issue_num:
         list_issues = repo.get_issue(issue_num)
+        list_issues = list(list_issues)
     else:
         list_issues = get_issues(repo)
     for each in list_issue_label:
@@ -76,6 +69,7 @@ def main(repo_name, issue_num, pr_num):
 
     if pr_num:
         list_prs = repo.get_pull(pr_num)
+        list_prs = list(list_prs)
     else:
         list_prs = get_prs(repo)
 
@@ -87,9 +81,11 @@ if __name__ == "__main__":
     repo_name = os.environ["GITHUB_REPOSITORY"]
     issue_num = os.environ["IU_NUM"]
     pr_num = os.environ["PR_NUM"]
-    if issue_num == None:
-        issue_num = ""
-    if pr_num == None:
-        pr_num = ""
+    if issue_num != "":
+        issue_num = int(issue_num)
+    if pr_num != "":
+        pr_num = int(pr_num)
+
     print(">>> issue number: {}, pr number: {}".format(issue_num, pr_num))
-    main(repo_name, int(issue_num), (pr_num))
+    print(int(issue_num))
+    main(repo_name, issue_num, pr_num)
