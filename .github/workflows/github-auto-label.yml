@@ -28,3 +28,5 @@ jobs:
       - uses: ./
         with:
           GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_IU_NUM: $ {{github.event.issues.number }}
+          INPUT_PR_NUM: $ {{github.event.number }}
