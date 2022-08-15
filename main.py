@@ -87,5 +87,4 @@ if __name__ == "__main__":
         pr_num = int(pr_num)
 
     print(">>> issue number: {}, pr number: {}".format(issue_num, pr_num))
-    print(int(issue_num))
     main(repo_name, issue_num, pr_num)
