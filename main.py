@@ -45,6 +45,8 @@ def get_prs(repo):
 
 
 def mod_pr_issue_label(list_element, label):
+    none_num =  0
+    label_num = 0
     for element in list_element:
         if check_element_label(element, label) == False:
             # element.set_labels(*element.labels, "{}/none".format(label))
