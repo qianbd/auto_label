@@ -85,4 +85,5 @@ if __name__ == "__main__":
     repo_name = os.environ["GITHUB_REPOSITORY"] 
     issue_num = os.environ["INPUT_IU_NUM"]
     pr_num    = os.environ["INPUT_PR_NUM"]
+    print(">>> issue number: {}, pr number: {}", format(issue_num), format(pr_num))
     main(repo_name,issue_num,pr_num)
