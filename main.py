@@ -61,6 +61,7 @@ def main(repo_name, issue_num, pr_num):
 
     if issue_num:
         list_issues = repo.get_issue(issue_num)
+        print(list_issues)
         list_issues = list(list_issues)
     else:
         list_issues = get_issues(repo)
@@ -87,4 +88,5 @@ if __name__ == "__main__":
         pr_num = int(pr_num)
 
     print(">>> issue number: {}, pr number: {}".format(issue_num, pr_num))
+    print(int(issue_num))
     main(repo_name, issue_num, pr_num)
