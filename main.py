@@ -42,6 +42,16 @@ def get_prs(repo):
             break
     return list_pr
 
+def auto_delete_default(element):
+    li_none=[]
+    for each in element.labels:
+        li = each.name.split("/")
+        if li[1] == 'none':
+            li_none.append(li[0])
+    for each in element.labels:
+        li = each.name.split("/")
+        if li[0] in li_none and li[1] != 'none':
+            element.remove_from_labels('{}/none'.format(li[0]))
 
 def mod_pr_issue_label(list_element, label):
     for element in list_element:
@@ -49,9 +59,7 @@ def mod_pr_issue_label(list_element, label):
             # element.set_labels(*element.labels, "{}/none".format(label))
             element.add_to_labels("{}/none".format(label))
         else:
-            none_label = "{}/none".format(label)
-            if check_element_label(element, none_label) == True:
-                element.remove_labels("{}/none".format(label))
+            auto_delete_default(element)
 
 
 def main(repo_name, issue_num, pr_num):
@@ -65,7 +73,6 @@ def main(repo_name, issue_num, pr_num):
         list_issues.append(git_issue)
     else:
         list_issues = get_issues(repo)
-
     for each in list_issue_label:
         mod_pr_issue_label(list_issues, each)
 
@@ -83,6 +90,8 @@ if __name__ == "__main__":
     repo_name = os.environ["GITHUB_REPOSITORY"]
     issue_num = os.environ["IU_NUM"]
     pr_num = os.environ["PR_NUM"]
+    # issue_num="31"
+    # pr_num=""
     if issue_num != "":
         issue_num = int(issue_num)
     if pr_num != "":
