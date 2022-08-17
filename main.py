@@ -50,6 +50,7 @@ def auto_delete_default(element):
             li_none.append(li[0])
     for each in element.labels:
         li = each.name.split("/")
+        print('list',li)
         if li[0] in li_none and li[1] != 'none':
             print('remove label','{}/none'.format(li[0]))
             print('element labels',element.labels)
