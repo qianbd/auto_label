@@ -51,8 +51,9 @@ def auto_delete_default(element):
     for each in element.labels:
         li = each.name.split("/")
         if li[0] in li_none and li[1] != 'none':
+            print('remove label','{}/none'.format(li[0]))
+            print('element labels',element.labels)
             element.remove_from_labels('{}/none'.format(li[0]))
-            return
 
 def mod_pr_issue_label(list_element, label):
     for element in list_element:
