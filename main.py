@@ -42,22 +42,25 @@ def get_prs(repo):
             break
     return list_pr
 
+
 def auto_delete_default(element):
-    li_none=[]
+    li_none = []
     for each in element.labels:
         li = each.name.split("/")
-        if li[1] == 'none':
+        if len(li) == 1:
+            continue
+        if li[1] == "none":
             li_none.append(li[0])
     for each in element.labels:
         li = each.name.split("/")
-        print('list',li)
-        if li[0] in li_none and li[1] != 'none':
-            print('remove label','{}/none'.format(li[0]))
-            print('element labels',element.labels)
-            try: 
-                element.remove_from_labels('{}/none'.format(li[0]))
+        if len(li) == 1:
+            continue
+        if li[0] in li_none and li[1] != "none":
+            try:
+                element.remove_from_labels("{}/none".format(li[0]))
             except:
                 pass
+
 
 def mod_pr_issue_label(list_element, label):
     for element in list_element:
