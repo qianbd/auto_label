@@ -1,5 +1,6 @@
 import os
 from datetime import datetime, timedelta
+from tabnanny import check
 from github import Github
 
 gh_url = "https://github.com"
@@ -61,15 +62,22 @@ def auto_delete_default(element):
             except:
                 pass
 
+def check_element_typelabel(element, label):
+    for i in element.labels:
+        if label in i:
+            return True
+    return False
 
 def mod_pr_issue_label(list_element, label):
     for element in list_element:
-        if check_element_label(element, label) == False:
-            # element.set_labels(*element.labels, "{}/none".format(label))
-            element.add_to_labels("{}/none".format(label))
+        if check_element_label(element, "type") == False:
+            element.add_to_labels("type/none")
         else:
-            auto_delete_default(element)
-
+            if check_element_typelabel(element,"type/bug") == True:
+                if check_element_label(element, label) == False:
+                    element.add_to_labels("{}/none".format(label))
+                else:
+                    auto_delete_default(element)
 
 def main(repo_name, issue_num, pr_num):
     list_issue_label = issue_labels.split(";")
