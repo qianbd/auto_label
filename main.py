@@ -64,7 +64,7 @@ def auto_delete_default(element):
 
 def check_element_typelabel(element, label):
     for i in element.labels:
-        if label in i:
+        if label == i:
             return True
     return False
 
