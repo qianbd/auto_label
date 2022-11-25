@@ -22,7 +22,7 @@ def main():
         raise Exception("Not implemented yet")
     if processor is None:
         print("No processor found")
-        exit(1)
+        return 
 
     try:
         processor.run()
